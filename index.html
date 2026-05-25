@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="%BASE_URL%data/assets/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="%BASE_URL%">
+    <link rel="stylesheet" href="%BASE_URL%data/assets/style.css">
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+    <script>
+      (function() {
+        function appendOverride() {
+          var l = document.createElement('link');
+          l.rel = 'stylesheet';
+          l.href = '%BASE_URL%data/assets/style.css';
+          document.head.appendChild(l);
+        }
+        if (document.readyState === 'complete') {
+          appendOverride();
+        } else {
+          window.addEventListener('load', appendOverride);
+        }
+      })();
+    </script>
+  </body>
+</html>

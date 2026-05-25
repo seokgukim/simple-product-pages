@@ -1,0 +1,113 @@
+/* public/data/assets/style.example.css
+   Example variant (serif, warm pastel palette, larger spacing)
+   This file intentionally differs from the primary theme to serve as an alternate example.
+*/
+
+:root {
+  --bg: #fff8ef;
+  --fg: #2b1f16;
+  --muted: #8b6f58;
+  --primary: #9a3412; /* deep amber */
+  --accent: #d97706;
+  --success: #059669;
+  --danger: #b91c1c;
+  --radius: 18px;
+  --gap: 1.5rem;
+  --font-size: 18px;
+  --card-bg: #fff7ed;
+  --card-border: rgba(42,27,11,0.06);
+  --card-image-height: 140px;
+  --color-accent: #10b981;
+  --color-border: #e6e6e6;
+  --color-card-bg: #ffffff;
+  --color-divider-weak: rgba(0,0,0,0.06);
+  --color-footer-bg: rgba(255,255,255,0.96);
+  --color-modal-bg: #ffffff;
+  --color-on-accent: #ffffff;
+  --color-overlay: rgba(0, 0, 0, 0.5);
+  --duration-scroll: 0.12s;
+  --font-size-modal-close: 1.5rem;
+  --font-size-nav: 12px;
+  --font-size-product-name: 1rem;
+  --gradient-scroll-progress: linear-gradient(180deg, rgba(16,185,129,0.12), rgba(6,182,212,0.12));
+  --radius-btn: 4px;
+  --radius-card: 8px;
+  --radius-image: 4px;
+  --radius-modal: 8px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-header: 0 1px 6px rgba(16,24,40,0.04);
+  --size-scroll-icon: 24px;
+  --size-scroll-thumb: 40px;
+  --space-btn-padding: 0.4rem 0.6rem;
+  --space-card-gap: 0.5rem;
+  --space-card-padding: 1rem;
+  --space-footer-inline: 0 1rem;
+  --space-header-inline: 0 1rem;
+  --space-modal-gap: 1rem;
+  --space-modal-padding: 1rem;
+  --space-page-padding: 1rem 2rem;
+  --space-section-gap: 1rem;
+  --space-scroll-offset: 80px;
+  --space-scroll-thumb-padding: 6px;
+  --width-product-indicator: 64px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: var(--font-size);
+  margin: 0;
+  padding: var(--gap);
+  -webkit-font-smoothing: antialiased;
+}
+
+.header { padding: calc(var(--gap) / 2) 0; text-align: center; }
+
+.site-title { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 0.25rem 0; color: var(--fg); }
+.site-subtitle { color: var(--muted); font-size: 0.95rem; margin: 0; }
+
+/* Cards are warm, subtle, and more spacious */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: calc(var(--gap) * 0.9);
+  box-shadow: 0 6px 20px rgba(43, 31, 22, 0.06);
+}
+
+/* Grid: slightly different column sizing */
+.grid { display: grid; gap: calc(var(--gap) / 1.1); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+/* Product layout */
+.product { display: flex; flex-direction: column; gap: 0.6rem; align-items: stretch; text-align: left; }
+
+.product .thumb {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: calc(var(--radius) / 1.5);
+  border: 6px solid rgba(255,255,255,0.6);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+h1,h2,h3 { font-family: Georgia, serif; color: var(--fg); margin: 0 0 0.4rem 0; }
+p { margin: 0 0 0.6rem 0; color: var(--muted); }
+
+/* Buttons: outlined by default, filled when primary */
+.btn { display: inline-block; padding: 0.5rem 0.9rem; border-radius: calc(var(--radius) - 4px); border: 2px solid var(--primary); background: transparent; color: var(--primary); font-weight: 600; cursor: pointer; }
+
+.btn.primary { background: var(--primary); color: #fff; box-shadow: 0 4px 12px rgba(154,52,18,0.18); }
+
+.price { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
+.meta { color: var(--muted); font-size: 0.95rem; }
+
+.footer { padding: var(--gap); text-align:center; color: var(--muted); font-size: 0.9rem; }
+
+/* Variant: compact example */
+.example-compact { --gap: 0.8rem; --font-size: 16px; --radius: 12px; }
+
+/* Accessibility helper */
+.a11y-focus *:focus { outline: 3px dashed var(--accent); outline-offset: 3px; }
+
