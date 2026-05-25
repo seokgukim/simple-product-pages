@@ -1,0 +1,49 @@
+/* Product-specific styles and examples for description.html */
+:root {
+  --color-accent: #10b981;
+  --color-border: #e6e6e6;
+  --color-text: #0f172a;
+}
+
+/* Simple product card examples are scoped in components, but add global helpers here */
+.product-section {
+  margin-top: 1.5rem;
+}
+
+/* Styles that description.html can use */
+.description-lead {
+  font-size: 1.05rem;
+  color: #334155;
+}
+
+.description-list {
+  padding-left: 1.25rem;
+}
+
+.description-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0.5rem 0;
+}
+
+/* Modal content helper */
+.product-description h1,
+.product-description h2,
+.product-description h3 {
+  margin-top: 0.25rem;
+}
+
+.product-description p {
+  line-height: 1.6;
+}
+
+/* Small utility */
+.btn {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background: var(--color-accent);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+}

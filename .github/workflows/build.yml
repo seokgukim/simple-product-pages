@@ -1,0 +1,58 @@
+name: CI Build (fetch Google Drive materials)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    environment: 'GOOGLE_DRIVE_SHARED_ENDPOINT'
+    env:
+      GOOGLE_DRIVE_SHARED_ENDPOINT: ${{ vars.GOOGLE_DRIVE_SHARED_ENDPOINT || secrets.GOOGLE_DRIVE_SHARED_ENDPOINT || '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.14.0'
+
+      - name: Ensure pnpm is available
+        run: |
+          corepack enable
+          corepack prepare pnpm@11.3.0 --activate
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 11.3.0
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Ensure GOOGLE_DRIVE_SHARED_ENDPOINT is set (fail fast)
+        run: |
+          if [ -z "$GOOGLE_DRIVE_SHARED_ENDPOINT" ]; then
+            echo "Environment variable GOOGLE_DRIVE_SHARED_ENDPOINT is not set. Failing CI."
+            exit 1
+          fi
+
+      - name: Info - fetch will run via prebuild
+        run: echo "Fetch occurs in prebuild via 'node ./scripts/generate-data.mjs'"
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Deploy to GitHub Pages (gh-pages branch via peaceiris)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
